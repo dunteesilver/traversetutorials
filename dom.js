@@ -211,6 +211,10 @@ var box = document.getElementById('box');
 var itemInput = document.querySelector('input[type="text"]');
 var form = document.querySelector('form');
 var select = document.querySelector('select');
+var btn = document.querySelector('#button');
+//var btnDel = document.querySelector('#button');
+console.log('btn: ' + btn);
+console.log(btn);
 
 // itemInput.addEventListener('keydown', runEvent);
 // itemInput.addEventListener('keyup', runEvent);
@@ -228,11 +232,58 @@ var select = document.querySelector('select');
 // select.addEventListener('input', runEvent);
 
 form.addEventListener('submit', runEvent);
+btn.addEventListener('click', clickEvent);
+//btnDel.addEventListener('click', deleteEvent);
 
 function runEvent(e){
   e.preventDefault();
   console.log('EVENT TYPE: '+e.type);
+  var currText = document.getElementById('items');
+  var items = document.getElementById('items');
+  var formText = document.getElementById('myText').value;
+  //console.log(items);
+  console.log('formText: ' + formText);
+  var li = document.createElement('li');
+  li.classList.add("list-group-item");
+  li.innerHTML = formText;
+  //var formList = '<li>'+ formText +'</li>';
+  //console.log('formList: ' + formList);
+  
+  document.getElementById('items').appendChild(li);
+  
+  //const node = document.getElementById("myList2").lastElementChild;
+  
+  //console.log(e.target.value);
+  // document.getElementById('output').innerHTML = '<h3>'+e.target.value+'</h3>';
 
+  // output.innerHTML = '<h3>MouseX: '+e.offsetX+' </h3><h3>MouseY: '+e.offsetY+'</h3>';
+
+  // document.body.style.backgroundColor = "rgb("+e.offsetX+","+e.offsetY+", 40)";
+}
+
+function clickEvent(e){
+  e.preventDefault();
+  console.log('EVENT TYPE: '+e.type);
+  var itemsList = document.getElementById('items');
+  
+  var lastElem = itemsList.lastElementChild;
+  itemsList.removeChild(lastElem);
+
+  //console.log(e.target.value);
+  // document.getElementById('output').innerHTML = '<h3>'+e.target.value+'</h3>';
+
+  // output.innerHTML = '<h3>MouseX: '+e.offsetX+' </h3><h3>MouseY: '+e.offsetY+'</h3>';
+
+  // document.body.style.backgroundColor = "rgb("+e.offsetX+","+e.offsetY+", 40)";
+}
+
+function deleteEvent(e){
+  //e.preventDefault();
+  //console.log('EVENT TYPE: '+e.type);
+  var itemsList = document.getElementById('items');
+  
+  var lastElem = itemsList.lastElementChild;
+  itemsList.removeChild(lastElem);
   //console.log(e.target.value);
   // document.getElementById('output').innerHTML = '<h3>'+e.target.value+'</h3>';
 
